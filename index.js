@@ -9,7 +9,7 @@ const getWordOfTheDay = async () => {
     },
   });
   const res = await response.json();
-  return res.word.toUpperCase();
+  return res.word;
 };
 
 const isWord = async (guess) => {
@@ -54,7 +54,7 @@ const init = async () => {
     word.addEventListener("keydown", async (event) => {
       if (event.keyCode === 13 && !gameOver) {
         let characters = Array.from(word.elements);
-        characters = characters.map((char) => char.value.toUpperCase());
+        characters = characters.map((char) => char.value.toLowerCase());
         let guess = characters.join("");
 
         if (guess.length !== 5) {
@@ -81,7 +81,7 @@ const init = async () => {
         } else {
           const letterInputs = Array.from(word.elements);
           letterInputs.forEach((letterInput, index) => {
-            const letter = letterInput.value;
+            const letter = letterInput.value.toLowerCase();
             letterInput.setAttribute("readonly", true);
             if (letter === wordOfTheDay[index]) {
               letterInput.classList.add("correct");
