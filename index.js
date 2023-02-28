@@ -54,7 +54,7 @@ const init = async () => {
     word.addEventListener("keydown", async (event) => {
       if (event.keyCode === 13 && !gameOver) {
         let characters = Array.from(word.elements);
-        characters = characters.map((char) => char.value.toLowerCase());
+        characters = characters.map((char) => char.value.toUpperCase());
         let guess = characters.join("");
 
         if (guess.length !== 5) {
