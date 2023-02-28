@@ -83,7 +83,12 @@ const init = async () => {
           letterInputs.forEach((letterInput, index) => {
             const letter = letterInput.value;
             letterInput.setAttribute("readonly", true);
-            alert(letter);
+            alert(`letter: ${letter}`);
+            alert(`wordOfTheDayIndex: ${wordOfTheDay[index]}`);
+            alert(`index is ---> ${index}`);
+            alert(
+              `letter === wordOfTheDay[index]: ${letter == wordOfTheDay[index]}`
+            );
             if (letter === wordOfTheDay[index]) {
               alert(`wordOfTheDay: ${wordOfTheDay[index]}`);
               letterInput.classList.add("correct");
