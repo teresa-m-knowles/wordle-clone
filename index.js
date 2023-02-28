@@ -23,7 +23,7 @@ const isWord = async (guess) => {
 
 const init = async () => {
   let gameOver = false;
-  const wordOfTheDay = await getWordOfTheDay();
+  const wordOfTheDay = "overt";
 
   const letters = document.getElementsByClassName("letter");
   const words = document.getElementsByClassName("word");
@@ -79,14 +79,18 @@ const init = async () => {
           gameOver = true;
           return alert("You win!");
         } else {
+          const answerChars = wordOfTheDay.split("");
           const letterInputs = Array.from(word.elements);
           letterInputs.forEach((letterInput, index) => {
             const letter = letterInput.value.toLowerCase();
             letterInput.setAttribute("readonly", true);
-            if (letter === wordOfTheDay[index]) {
+            if (letter === answerChars[index]) {
               letterInput.classList.add("correct");
-            } else if (wordOfTheDay.includes(letter)) {
+              answerChars.splice(index, 1);
+            } else if (answerChars.includes(letter)) {
               letterInput.classList.add("wrong-position");
+              const letterIndex = answerChars.indexOf(letter);
+              answerChars.splice(letterIndex, 1);
             }
           });
           if (word.nextElementSibling) {
