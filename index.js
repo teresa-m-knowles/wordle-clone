@@ -23,7 +23,7 @@ const isWord = async (guess) => {
 
 const init = async () => {
   let gameOver = false;
-  const wordOfTheDay = "overt";
+  const wordOfTheDay = await getWordOfTheDay();
 
   const letters = document.getElementsByClassName("letter");
   const words = document.getElementsByClassName("word");
